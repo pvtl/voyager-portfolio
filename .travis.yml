@@ -1,0 +1,50 @@
+# Allow Ubuntu Trusty (Installs MySQL 5.7)
+dist: trusty
+sudo: required
+addons:
+  apt:
+    sources:
+      - mysql-5.7-trusty
+    packages:
+      - mysql-server
+      - mysql-client
+
+language: php
+services: mysql
+
+php:
+  - 7.0
+  - 7.1
+  - 7.2
+matrix:
+  fast_finish: true
+
+before_script:
+  - travis_retry composer self-update
+
+  # Setup MySQL
+  - sudo mysql_upgrade
+  - sudo service mysql restart
+  - mysql -u root -e 'CREATE DATABASE homestead;'
+  - mysql -u root -e "CREATE USER 'homestead'@'localhost' IDENTIFIED BY 'secret';"
+  - mysql -u root -e "GRANT ALL ON homestead.* TO 'homestead'@'localhost';"
+
+  ## Install Laravel
+  - composer create-project --prefer-dist laravel/laravel pvtl-laravel "5.5.*"
+  - cd pvtl-laravel
+
+  ## Pull in our vendor files (latest)
+  - composer require tcg/voyager
+  - composer require pvtl/voyager-frontend
+  - composer require pvtl/voyager-portfolio
+
+  ## Setup Voyager and our modules
+  - php artisan voyager:install --with-dummy
+  - php artisan voyager-frontend:install
+  - php artisan voyager-portfolio:install
+
+  ## cd into our vendor folder and execute PHPUnit from here
+  - cd $TRAVIS_BUILD_DIR/pvtl-laravel/vendor/pvtl/voyager-portfolio
+  - $TRAVIS_BUILD_DIR/pvtl-laravel/vendor/bin/phpunit
+script:
+  - phpunit

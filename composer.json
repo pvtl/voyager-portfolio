@@ -1,0 +1,45 @@
+{
+    "name": "pvtl/voyager-portfolio",
+    "description": "Ahoy! - A package to implement page blocks into Voyager",
+    "keywords": ["laravel", "frontend", "voyager", "portfolio"],
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Pivotal Agency",
+            "homepage": "http://pivotalagency.com.au",
+            "email": "tech@pivotalagency.com.au"
+        }
+    ],
+    "require": {
+        "laravel/framework": "5.5.*",
+        "tcg/voyager": "^1.0",
+        "pvtl/voyager-frontend": "dev-master"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.7"
+    },
+    "autoload": {
+        "classmap": [],
+        "psr-4": {
+            "Pvtl\\VoyagerPortfolio\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "classmap": [],
+        "psr-4": {
+            "Pvtl\\VoyagerPortfolio\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Pvtl\\VoyagerPortfolio\\Providers\\PortfolioServiceProvider"
+            ]
+        }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "post-package-install": ["@php artisan voyager-portfolio:install"]
+    }
+}
