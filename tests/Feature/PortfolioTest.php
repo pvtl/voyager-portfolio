@@ -23,7 +23,7 @@ class PortfolioTest extends TestCase
             'body' => $content,
             'testimonial' => $content,
             'testimonial_author' => 'John Smith',
-            'seo_title' => 'Hello World! - From Pivotal',
+            'meta_title' => 'Hello World! - From Pivotal',
             'meta_description' => 'There is no one who loves pain itself, who seeks after',
         ]);
     }

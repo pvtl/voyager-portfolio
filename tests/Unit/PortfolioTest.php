@@ -23,7 +23,7 @@ class PortfolioTest extends TestCase
             'body' => '<p>There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain. What is Lorem Ipsum? Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p><p>What is Lorem Ipsum? Lorem Ipsum is simply dummy text of the printing and typesetting industry. There is no one who loves pain itself, who seeks after it and wants to have it.</p>',
             'testimonial' => '<p>There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain. What is Lorem Ipsum? Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p><p>What is Lorem Ipsum? Lorem Ipsum is simply dummy text of the printing and typesetting industry. There is no one who loves pain itself, who seeks after it and wants to have it.</p>',
             'testimonial_author' => 'John Smith',
-            'seo_title' => 'Hello World! - From Pivotal',
+            'meta_title' => 'Hello World! - From Pivotal',
             'meta_description' => 'There is no one who loves pain itself, who seeks after',
         ]);
     }

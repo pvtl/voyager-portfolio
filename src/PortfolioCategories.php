@@ -18,6 +18,8 @@ class PortfolioCategories extends Model
         'updated_at',
     ];
 
+    public static $slugPrefix = 'portfolio-category/';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -36,18 +38,5 @@ class PortfolioCategories extends Model
     public function parentId()
     {
         return $this->belongsTo('Pvtl\VoyagerPortfolio\PortfolioCategories');
-    }
-
-    /**
-     * Update the portfolio item slug
-     *
-     * @param  string  $value
-     * @return string
-     */
-    public function getSlugAttribute($value)
-    {
-        if (!empty($value)) {
-            return 'portfolio-category/' . $value;
-        }
     }
 }

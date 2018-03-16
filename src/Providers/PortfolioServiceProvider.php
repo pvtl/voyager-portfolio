@@ -68,7 +68,7 @@ class PortfolioServiceProvider extends ServiceProvider
     {
         // Load views
         $this->loadViewsFrom(self::PACKAGE_DIR . 'resources/views', 'voyager-portfolio');
-        // $this->loadViewsFrom(self::PACKAGE_DIR . 'resources/views/vendor/voyager', 'voyager');
+        $this->loadViewsFrom(self::PACKAGE_DIR . 'resources/views/vendor/voyager', 'voyager');
     }
 
     /**

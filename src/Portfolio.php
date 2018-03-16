@@ -5,10 +5,17 @@ namespace Pvtl\VoyagerPortfolio;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Database\Eloquent\Model;
+use TCG\Voyager\Traits\Translatable;
 
 class Portfolio extends Model
 {
+    use Translatable;
+
     protected $table = 'portfolio';
+
+    protected $translatable = ['title', 'meta_title', 'excerpt', 'body', 'slug', 'meta_description'];
+
+    public static $slugPrefix = 'portfolio/';
 
     /**
      * The attributes that should be mutated to dates.
@@ -36,7 +43,7 @@ class Portfolio extends Model
         'body',
         'testimonial',
         'testimonial_author',
-        'seo_title',
+        'meta_title',
         'meta_description'
     ];
 
@@ -46,18 +53,5 @@ class Portfolio extends Model
     public function categoryId()
     {
         return $this->belongsTo('Pvtl\VoyagerPortfolio\PortfolioCategories');
-    }
-
-    /**
-     * Update the portfolio item slug
-     *
-     * @param  string  $value
-     * @return string
-     */
-    public function getSlugAttribute($value)
-    {
-        if (!empty($value)) {
-            return 'portfolio/' . $value;
-        }
     }
 }

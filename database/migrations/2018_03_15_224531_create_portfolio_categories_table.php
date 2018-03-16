@@ -15,8 +15,8 @@ class CreatePortfolioCategoriesTable extends Migration
         // Create table for storing categories
         Schema::create('portfolio_categories', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('slug')->unique();
+            $table->string('name')->nullable()->default(null);
+            $table->string('slug')->unique()->nullable()->default(null);
             $table->integer('parent_id')->unsigned()->nullable()->default(null);
             $table->foreign('parent_id')->references('id')->on('portfolio_categories')->onUpdate('cascade')->onDelete('set null');
             $table->integer('order')->default(1);

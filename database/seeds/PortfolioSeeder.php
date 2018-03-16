@@ -48,7 +48,7 @@ class PortfolioSeeder extends Seeder
             'display_name_plural' => 'Portfolio',
             'icon' => 'voyager-certificate',
             'model_name' => 'Pvtl\\VoyagerPortfolio\\Portfolio',
-            'controller' => '',
+            'controller' => '\\Pvtl\\VoyagerPortfolio\\Http\\Controllers\\PortfolioController',
             'generate_permissions' => 1
         ]);
         $dataType->save();
@@ -103,7 +103,9 @@ class PortfolioSeeder extends Seeder
                 'edit'         => 1,
                 'add'          => 1,
                 'delete'       => 1,
-                'details'      => '',
+                'details'      => json_encode([
+                    'rule' => 'required|string'
+                ]),
                 'order'        => 2,
             ])->save();
         }
@@ -124,6 +126,7 @@ class PortfolioSeeder extends Seeder
                         'origin'      => 'title',
                         'forceUpdate' => true,
                     ],
+                    'rule' => 'required|unique:portfolio,slug'
                 ]),
                 'order' => 3,
             ])->save();
@@ -234,28 +237,30 @@ class PortfolioSeeder extends Seeder
             ])->save();
         }
 
-        $dataRow = $this->dataRow($postDataType, 'excerpt');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'text_area',
-                'display_name' => 'Excerpt',
-                'required'     => 1,
-                'browse'       => 0,
-                'read'         => 1,
-                'edit'         => 1,
-                'add'          => 1,
-                'delete'       => 1,
-                'details'      => '',
-                'order'        => 8,
-            ])->save();
-        }
-
         $dataRow = $this->dataRow($postDataType, 'body');
         if (!$dataRow->exists) {
             $dataRow->fill([
                 'type'         => 'rich_text_box',
                 'display_name' => 'Body',
                 'required'     => 1,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => json_encode([
+                    'rule' => 'required|string'
+                ]),
+                'order'        => 8,
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($postDataType, 'excerpt');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'text_area',
+                'display_name' => 'Excerpt',
+                'required'     => 0,
                 'browse'       => 0,
                 'read'         => 1,
                 'edit'         => 1,
@@ -298,7 +303,7 @@ class PortfolioSeeder extends Seeder
             ])->save();
         }
 
-        $dataRow = $this->dataRow($postDataType, 'seo_title');
+        $dataRow = $this->dataRow($postDataType, 'meta_title');
         if (!$dataRow->exists) {
             $dataRow->fill([
                 'type'         => 'text',
@@ -383,7 +388,7 @@ class PortfolioSeeder extends Seeder
                 'body' => '<p>There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain. What is Lorem Ipsum? Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p><p>What is Lorem Ipsum? Lorem Ipsum is simply dummy text of the printing and typesetting industry. There is no one who loves pain itself, who seeks after it and wants to have it.</p>',
                 'testimonial' => '<p>There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain. What is Lorem Ipsum? Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p><p>What is Lorem Ipsum? Lorem Ipsum is simply dummy text of the printing and typesetting industry. There is no one who loves pain itself, who seeks after it and wants to have it.</p>',
                 'testimonial_author' => 'John Smith',
-                'seo_title' => 'Hello World! - From Pivotal',
+                'meta_title' => 'Hello World! - From Pivotal',
                 'meta_description' => 'There is no one who loves pain itself, who seeks after',
             ])->save();
         }

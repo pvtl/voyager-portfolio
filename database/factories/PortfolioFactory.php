@@ -25,7 +25,7 @@ $factory->define(Pvtl\VoyagerPortfolio\Portfolio::class, function (Faker $faker)
         'body' => '<p>' . $faker . '</p>',
         'testimonial' => '<p>' . $faker . '</p>',
         'testimonial_author' => 'John Smith',
-        'seo_title' => 'Hello World! - From Pivotal',
+        'meta_title' => 'Hello World! - From Pivotal',
         'meta_description' => 'There is no one who loves pain itself, who seeks after',
     ];
 });
