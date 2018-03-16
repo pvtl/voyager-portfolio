@@ -92,111 +92,6 @@ class PortfolioSeeder extends Seeder
             ])->save();
         }
 
-        $dataRow = $this->dataRow($postDataType, 'title');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'text',
-                'display_name' => 'Title',
-                'required'     => 1,
-                'browse'       => 1,
-                'read'         => 1,
-                'edit'         => 1,
-                'add'          => 1,
-                'delete'       => 1,
-                'details'      => json_encode([
-                    'rule' => 'required|string'
-                ]),
-                'order'        => 2,
-            ])->save();
-        }
-
-        $dataRow = $this->dataRow($postDataType, 'slug');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'text',
-                'display_name' => 'Slug',
-                'required'     => 1,
-                'browse'       => 0,
-                'read'         => 1,
-                'edit'         => 1,
-                'add'          => 1,
-                'delete'       => 1,
-                'details'      => json_encode([
-                    'slugify' => [
-                        'origin'      => 'title',
-                        'forceUpdate' => true,
-                    ],
-                    'rule' => 'required|unique:portfolio,slug'
-                ]),
-                'order' => 3,
-            ])->save();
-        }
-
-        $dataRow = $this->dataRow($postDataType, 'status');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'select_dropdown',
-                'display_name' => 'Status',
-                'required'     => 1,
-                'browse'       => 1,
-                'read'         => 1,
-                'edit'         => 1,
-                'add'          => 1,
-                'delete'       => 1,
-                'details'      => json_encode([
-                    'default' => 'DRAFT',
-                    'options' => [
-                        'PUBLISHED' => 'Published',
-                        'DRAFT'     => 'Draft',
-                        'PENDING'   => 'Pending',
-                    ],
-                ]),
-                'order' => 4,
-            ])->save();
-        }
-
-        $dataRow = $this->dataRow($postDataType, 'featured');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'checkbox',
-                'display_name' => 'Featured',
-                'required'     => 0,
-                'browse'       => 0,
-                'read'         => 1,
-                'edit'         => 1,
-                'add'          => 1,
-                'delete'       => 1,
-                'details'      => '',
-                'order'        => 5,
-            ])->save();
-        }
-
-        $dataRow = $this->dataRow($postDataType, 'category_id');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'select_dropdown',
-                'display_name' => 'Category',
-                'required'     => 1,
-                'browse'       => 0,
-                'read'         => 1,
-                'edit'         => 1,
-                'add'          => 1,
-                'delete'       => 0,
-                'details'      => json_encode([
-                    'default' => '',
-                    'null'    => '',
-                    'options' => [
-                        '' => '-- None --',
-                    ],
-                    'relationship' => [
-                        'key'   => 'id',
-                        'label' => 'name',
-                    ],
-                ]),
-                'order'        => 6,
-            ])->save();
-        }
-
         $dataRow = $this->dataRow($postDataType, 'image');
         if (!$dataRow->exists) {
             $dataRow->fill([
@@ -233,7 +128,112 @@ class PortfolioSeeder extends Seeder
                         ],
                     ],
                 ]),
-                'order' => 7,
+                'order' => 2,
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($postDataType, 'title');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'text',
+                'display_name' => 'Title',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => json_encode([
+                    'rule' => 'required|string'
+                ]),
+                'order'        => 3,
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($postDataType, 'slug');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'text',
+                'display_name' => 'Slug',
+                'required'     => 1,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => json_encode([
+                    'slugify' => [
+                        'origin'      => 'title',
+                        'forceUpdate' => true,
+                    ],
+                    'rule' => 'required|unique:portfolio,slug'
+                ]),
+                'order' => 4,
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($postDataType, 'status');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'select_dropdown',
+                'display_name' => 'Status',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => json_encode([
+                    'default' => 'DRAFT',
+                    'options' => [
+                        'PUBLISHED' => 'Published',
+                        'DRAFT'     => 'Draft',
+                        'PENDING'   => 'Pending',
+                    ],
+                ]),
+                'order' => 5,
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($postDataType, 'category_id');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'select_dropdown',
+                'display_name' => 'Category',
+                'required'     => 1,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'details'      => json_encode([
+                    'default' => '',
+                    'null'    => '',
+                    'options' => [
+                        '' => '-- None --',
+                    ],
+                    'relationship' => [
+                        'key'   => 'id',
+                        'label' => 'name',
+                    ],
+                ]),
+                'order'        => 6,
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($postDataType, 'featured');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'checkbox',
+                'display_name' => 'Featured',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => '',
+                'order'        => 7,
             ])->save();
         }
 
