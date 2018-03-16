@@ -238,7 +238,7 @@ class PortfolioSeeder extends Seeder
         if (!$dataRow->exists) {
             $dataRow->fill([
                 'type'         => 'text_area',
-                'display_name' => 'excerpt',
+                'display_name' => 'Excerpt',
                 'required'     => 1,
                 'browse'       => 0,
                 'read'         => 1,
