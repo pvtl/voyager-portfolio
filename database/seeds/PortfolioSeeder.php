@@ -144,7 +144,9 @@ class PortfolioSeeder extends Seeder
                 'add'          => 1,
                 'delete'       => 1,
                 'details'      => json_encode([
-                    'rule' => 'required|string'
+                    'validation' => [
+                        'rule' => 'required|string'
+                    ]
                 ]),
                 'order'        => 3,
             ])->save();
@@ -166,7 +168,9 @@ class PortfolioSeeder extends Seeder
                         'origin'      => 'title',
                         'forceUpdate' => true,
                     ],
-                    'rule' => 'required|unique:portfolio,slug'
+                    'validation' => [
+                        'rule' => 'required|unique:portfolio,slug'
+                    ]
                 ]),
                 'order' => 4,
             ])->save();
@@ -248,9 +252,7 @@ class PortfolioSeeder extends Seeder
                 'edit'         => 1,
                 'add'          => 1,
                 'delete'       => 1,
-                'details'      => json_encode([
-                    'rule' => 'required|string'
-                ]),
+                'details'      => '',
                 'order'        => 8,
             ])->save();
         }

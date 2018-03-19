@@ -86,7 +86,9 @@ class PortfolioCategorySeeder extends Seeder
                 'add'          => 0,
                 'delete'       => 0,
                 'details'      => json_encode([
-                    'rule' => 'required|string'
+                    'validation' => [
+                        'rule' => 'required|string'
+                    ]
                 ]),
                 'order'        => 1,
             ])->save();
@@ -124,7 +126,9 @@ class PortfolioCategorySeeder extends Seeder
                         'origin' => 'name',
                         'forceUpdate' => true,
                     ],
-                    'rule' => 'required|unique:portfolio_categories,slug'
+                    'validation' => [
+                        'rule' => 'required|unique:portfolio_categories,slug'
+                    ]
                 ]),
                 'order' => 3,
             ])->save();
