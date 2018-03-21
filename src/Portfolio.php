@@ -6,16 +6,29 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Database\Eloquent\Model;
 use TCG\Voyager\Traits\Translatable;
+use Laravel\Scout\Searchable;
 
 class Portfolio extends Model
 {
-    use Translatable;
+    use Translatable,
+        Searchable;
+
+    public $asYouType = false;
 
     protected $table = 'portfolio';
 
-    protected $translatable = ['title', 'meta_title', 'excerpt', 'body', 'slug', 'meta_description'];
-
     public static $slugPrefix = 'portfolio/';
+
+    /**
+     * Get the indexed data array for the model.
+     * @return array
+     */
+    public function toSearchableArray()
+    {
+        $array = $this->toArray();
+        // customise the searchable array
+        return $array;
+    }
 
     /**
      * The attributes that should be mutated to dates.
