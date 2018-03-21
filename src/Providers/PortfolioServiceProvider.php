@@ -34,7 +34,7 @@ class PortfolioServiceProvider extends ServiceProvider
     public function register()
     {
         // Merge our Scout config over
-        // $this->mergeConfigFrom(self::PACKAGE_DIR . 'config/scout.php', 'scout.tntsearch.searchableModels');
+        $this->mergeConfigFrom(self::PACKAGE_DIR . 'config/scout.php', 'scout.tntsearch.searchableModels');
     }
 
     /**
@@ -42,11 +42,7 @@ class PortfolioServiceProvider extends ServiceProvider
      */
     protected function strapRoutes()
     {
-        // Pull default web routes
-        // $this->loadRoutesFrom(base_path('/routes/web.php'));
-
-        // Then add our Pages and Posts Routes
-        // $this->loadRoutesFrom(self::PACKAGE_DIR . 'routes/web.php');
+        $this->loadRoutesFrom(self::PACKAGE_DIR . 'routes/web.php');
     }
 
     /**
@@ -67,7 +63,7 @@ class PortfolioServiceProvider extends ServiceProvider
     protected function strapViews()
     {
         // Load views
-        $this->loadViewsFrom(self::PACKAGE_DIR . 'resources/views', 'voyager-portfolio');
+        $this->loadViewsFrom(self::PACKAGE_DIR . 'resources/views/vendor/voyager-frontend', 'voyager-frontend');
         $this->loadViewsFrom(self::PACKAGE_DIR . 'resources/views/vendor/voyager', 'voyager');
     }
 
