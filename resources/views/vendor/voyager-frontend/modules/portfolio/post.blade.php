@@ -10,8 +10,15 @@
 
     <div class="grid-container">
         <div class="grid-x">
-            <div class="cell small-12">
+            <div class="cell medium-6">
                 {!! $post->body !!}
+            </div> <!-- /.cell -->
+
+            <div class="cell medium-6">
+                {!! $post->testimonial !!}
+                <p>
+                    {!! $post->testimonial_author !!}
+                </p>
             </div> <!-- /.cell -->
         </div> <!-- /.grid -->
     </div> <!-- /.grid-container -->
