@@ -4,10 +4,11 @@
  * Portfolio module
  */
 Route::group([
+    'as' => 'voyager-frontend.portfolio.',
     'prefix' => 'portfolio',
     'middleware' => ['web'],
     'namespace' => '\Pvtl\VoyagerPortfolio\Http\Controllers'
 ], function () {
-    Route::get('/', 'PortfolioController@getPosts');
-    Route::get('{slug}', 'PortfolioController@getPost');
+    Route::get('/', ['uses' => 'PortfolioController@getPosts', 'as' => 'list']);
+    Route::get('{slug}', ['uses' => 'PortfolioController@getPost', 'as' => 'post']);
 });

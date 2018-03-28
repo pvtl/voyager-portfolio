@@ -16,13 +16,12 @@ class PortfolioController extends BaseVoyagerBreadController
      */
     public function getPosts()
     {
-        dd('abcd');
         $posts = Portfolio::where([
                 ['status', '=', 'PUBLISHED'],
             ])->orderBy('created_at', 'desc')
             ->paginate(12);
 
-        return view('voyager-frontend::modules/posts/posts', [
+        return view('voyager-frontend::modules/portfolio/posts', [
             'posts' => $posts,
         ]);
     }
@@ -59,7 +58,7 @@ class PortfolioController extends BaseVoyagerBreadController
             ->orderBy('created_at', 'desc')
             ->get();
 
-        return view('voyager-frontend::modules/posts/posts-grid', [
+        return view('voyager-frontend::modules/portfolio/posts-grid', [
             'posts' => $posts,
         ]);
     }
