@@ -18,8 +18,6 @@ class PortfolioCategories extends Model
         'updated_at',
     ];
 
-    public static $slugPrefix = 'portfolio-category/';
-
     /**
      * The attributes that are mass assignable.
      *

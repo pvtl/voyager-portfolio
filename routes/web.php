@@ -4,9 +4,9 @@
  * Portfolio module
  */
 Route::group([
-    'as' => 'voyager-frontend.portfolio.',
-    'prefix' => 'portfolio',
+    'prefix' => 'portfolio', // Must match its `slug` record in the DB > `data_types`
     'middleware' => ['web'],
+    'as' => 'voyager-frontend.portfolio.',
     'namespace' => '\Pvtl\VoyagerPortfolio\Http\Controllers'
 ], function () {
     Route::get('/', ['uses' => 'PortfolioController@getPosts', 'as' => 'list']);

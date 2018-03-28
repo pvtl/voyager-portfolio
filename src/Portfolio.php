@@ -17,8 +17,6 @@ class Portfolio extends Model
 
     protected $table = 'portfolio';
 
-    public static $slugPrefix = 'portfolio/';
-
     /**
      * Get the indexed data array for the model.
      * @return array
