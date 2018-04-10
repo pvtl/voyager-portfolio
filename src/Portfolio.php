@@ -16,6 +16,16 @@ class Portfolio extends Model
     public $asYouType = false;
 
     protected $table = 'portfolio';
+    
+      protected $translatable = [
+            'title', 
+            'slug', 
+            'excerpt',
+            'body',
+            'testimonial',
+            'meta_title',
+            'meta_description'
+];
 
     /**
      * Get the indexed data array for the model.
