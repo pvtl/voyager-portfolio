@@ -1,7 +1,5 @@
 # Voyager Portfolio
 
-![Voyager Portfolio Screenshot](/readme-intro.jpg)
-
 This [Laravel](https://laravel.com/)/[Voyager](https://laravelvoyager.com/) module adds a Porfolio 'post type' and front-end.
 
 Built by [Pivotal Agency](https://pivotal.agency/).
