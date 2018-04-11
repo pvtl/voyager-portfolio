@@ -16,16 +16,16 @@ class Portfolio extends Model
     public $asYouType = false;
 
     protected $table = 'portfolio';
-    
-      protected $translatable = [
-            'title', 
-            'slug', 
-            'excerpt',
-            'body',
-            'testimonial',
-            'meta_title',
-            'meta_description'
-];
+
+    protected $translatable = [
+        'title',
+        'slug',
+        'excerpt',
+        'body',
+        'testimonial',
+        'meta_title',
+        'meta_description'
+    ];
 
     /**
      * Get the indexed data array for the model.
@@ -67,6 +67,20 @@ class Portfolio extends Model
         'meta_title',
         'meta_description'
     ];
+
+    const PUBLISHED = 'PUBLISHED';
+
+    /**
+     * Scope a query to only published scopes.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopePublished(Builder $query)
+    {
+        return $query->where('status', '=', static::PUBLISHED);
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
