@@ -2,8 +2,6 @@
 
 namespace Pvtl\VoyagerPortfolio;
 
-use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Config;
 use TCG\Voyager\Traits\HasRelationships;
 use Illuminate\Database\Eloquent\Model;
 use TCG\Voyager\Traits\Translatable;
@@ -39,7 +37,6 @@ class PortfolioCategories extends Model
         'parent_id',
         'order'
     ];
-
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
