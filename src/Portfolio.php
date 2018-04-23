@@ -2,16 +2,17 @@
 
 namespace Pvtl\VoyagerPortfolio;
 
+use TCG\Voyager\Traits\Translatable;
+use Laravel\Scout\Searchable;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Database\Eloquent\Model;
-use TCG\Voyager\Traits\Translatable;
-use Laravel\Scout\Searchable;
 
 class Portfolio extends Model
 {
-    use Translatable,
-        Searchable;
+    use Translatable, Searchable;
+
+    const PUBLISHED = 'PUBLISHED';
 
     public $asYouType = false;
 
@@ -67,8 +68,6 @@ class Portfolio extends Model
         'meta_title',
         'meta_description'
     ];
-
-    const PUBLISHED = 'PUBLISHED';
 
     /**
      * Scope a query to only published scopes.

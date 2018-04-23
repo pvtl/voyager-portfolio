@@ -2,10 +2,10 @@
 
 namespace Pvtl\VoyagerPortfolio\Commands;
 
+use Pvtl\VoyagerPortfolio\Providers\PortfolioServiceProvider;
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 use Symfony\Component\Process\Process;
-use Pvtl\VoyagerPortfolio\Providers\PortfolioServiceProvider;
 
 class InstallCommand extends Command
 {

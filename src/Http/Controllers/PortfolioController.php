@@ -2,10 +2,10 @@
 
 namespace Pvtl\VoyagerPortfolio\Http\Controllers;
 
-use Illuminate\Http\Request;
-use TCG\Voyager\Facades\Voyager;
 use Pvtl\VoyagerPortfolio\Portfolio;
+use TCG\Voyager\Facades\Voyager;
 use TCG\Voyager\Http\Controllers\VoyagerBreadController as BaseVoyagerBreadController;
+use Illuminate\Http\Request;
 
 class PortfolioController extends BaseVoyagerBreadController
 {
@@ -17,8 +17,8 @@ class PortfolioController extends BaseVoyagerBreadController
     public function getPosts()
     {
         $posts = Portfolio::where([
-                ['status', '=', 'PUBLISHED'],
-            ])->orderBy('created_at', 'desc')
+            ['status', '=', 'PUBLISHED'],
+        ])->orderBy('created_at', 'desc')
             ->paginate(12);
 
         return view('voyager-frontend::modules/portfolio/posts', [
@@ -36,9 +36,9 @@ class PortfolioController extends BaseVoyagerBreadController
     public function getPost($slug)
     {
         $post = Portfolio::where([
-                ['slug', '=', $slug],
-                ['status', '=', 'PUBLISHED'],
-            ])->firstOrFail();
+            ['slug', '=', $slug],
+            ['status', '=', 'PUBLISHED'],
+        ])->firstOrFail();
 
         return view('voyager-frontend::modules/portfolio/post', [
             'post' => $post,
@@ -53,8 +53,8 @@ class PortfolioController extends BaseVoyagerBreadController
     public function recentBlogPosts($numPosts = 4)
     {
         $posts = Portfolio::where([
-                ['status', '=', 'PUBLISHED'],
-            ])->limit($numPosts)
+            ['status', '=', 'PUBLISHED'],
+        ])->limit($numPosts)
             ->orderBy('created_at', 'desc')
             ->get();
 
