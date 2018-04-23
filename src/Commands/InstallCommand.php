@@ -3,12 +3,17 @@
 namespace Pvtl\VoyagerPortfolio\Commands;
 
 use Pvtl\VoyagerPortfolio\Providers\PortfolioServiceProvider;
+use TCG\Voyager\Traits\Seedable;
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 use Symfony\Component\Process\Process;
 
 class InstallCommand extends Command
 {
+    use Seedable;
+
+    protected $seedersPath = __DIR__.'/../../database/seeds/';
+
     /**
      * The console command name.
      *
@@ -62,8 +67,7 @@ class InstallCommand extends Command
         $this->call('migrate');
 
         $this->info('Seeding data into the database');
-        $this->call('db:seed', ['--class' => 'PortfolioCategorySeeder']);
-        $this->call('db:seed', ['--class' => 'PortfolioSeeder']);
+        $this->seed('PortfolioDatabaseSeeder');
 
         $this->info('Successfully installed Voyager Portfolio! Enjoy');
     }

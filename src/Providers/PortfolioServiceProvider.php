@@ -50,11 +50,6 @@ class PortfolioServiceProvider extends ServiceProvider
      */
     protected function strapPublishers()
     {
-        // Defines which files to copy the root project
-        $this->publishes([
-            self::PACKAGE_DIR . 'database/migrations' => base_path('database/migrations'),
-            self::PACKAGE_DIR . 'database/seeds' => base_path('database/seeds'),
-        ]);
     }
 
     /**
