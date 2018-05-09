@@ -4,10 +4,10 @@ namespace Pvtl\VoyagerPortfolio\Http\Controllers;
 
 use Pvtl\VoyagerPortfolio\Portfolio;
 use TCG\Voyager\Facades\Voyager;
-use TCG\Voyager\Http\Controllers\VoyagerBreadController as BaseVoyagerBreadController;
 use Illuminate\Http\Request;
+use TCG\Voyager\Http\Controllers\VoyagerBaseController;
 
-class PortfolioController extends BaseVoyagerBreadController
+class PortfolioController extends VoyagerBaseController
 {
     /**
      * Route: Gets all posts and passes data to a view
