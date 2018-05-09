@@ -1,11 +1,11 @@
 @extends('voyager::master')
 
-@section('page_title', __('voyager.generic.'.(isset($dataTypeContent->id) ? 'edit' : 'add')).' '.$dataType->display_name_singular)
+@section('page_title', __('voyager::generic.'.(isset($dataTypeContent->id) ? 'edit' : 'add')).' '.$dataType->display_name_singular)
 
 @section('page_header')
     <h1 class="page-title">
         <i class="{{ $dataType->icon }}"></i>
-        {{ __('voyager.generic.'.(isset($dataTypeContent->id) ? 'edit' : 'add')).' '.$dataType->display_name_singular }}
+        {{ __('voyager::generic.'.(isset($dataTypeContent->id) ? 'edit' : 'add')).' '.$dataType->display_name_singular }}
     </h1>
     @include('voyager::multilingual.language-selector')
 @stop
@@ -87,8 +87,8 @@
 
                         <div class="panel-heading">
                             <h3 class="panel-title">
-                                <i class="voyager-character"></i> {{ __('voyager.post.title') }}
-                                <span class="panel-desc"> {{ __('voyager.post.title_sub') }}</span>
+                                <i class="voyager-character"></i> {{ __('voyager::post.title') }}
+                                <span class="panel-desc"> {{ __('voyager::post.title_sub') }}</span>
                             </h3>
                             <div class="panel-actions">
                                 <a class="panel-action voyager-angle-down" data-toggle="panel-collapse" aria-hidden="true"></a>
@@ -102,7 +102,7 @@
 
                     <div class="panel">
                         <div class="panel-heading">
-                            <h3 class="panel-title">{{ __('voyager.post.content') }}</h3>
+                            <h3 class="panel-title">{{ __('voyager::post.content') }}</h3>
                             <div class="panel-actions">
                                 <a class="panel-action voyager-angle-down" data-toggle="panel-collapse" aria-hidden="true"></a>
                             </div>
@@ -118,14 +118,14 @@
                     <!-- ### DETAILS ### -->
                     <div class="panel panel panel-bordered panel-warning">
                         <div class="panel-heading">
-                            <h3 class="panel-title"><i class="icon wb-clipboard"></i> {{ __('voyager.post.details') }}</h3>
+                            <h3 class="panel-title"><i class="icon wb-clipboard"></i> {{ __('voyager::post.details') }}</h3>
                             <div class="panel-actions">
                                 <a class="panel-action voyager-angle-down" data-toggle="panel-collapse" aria-hidden="true"></a>
                             </div>
                         </div>
                         <div class="panel-body">
                             <div class="form-group">
-                                <label for="name">{{ __('voyager.post.slug') }}</label>
+                                <label for="name">{{ __('voyager::post.slug') }}</label>
                                 @include('voyager::multilingual.input-hidden', [
                                     '_field_name'  => 'slug',
                                     '_field_trans' => get_field_translations($dataTypeContent, 'slug')
@@ -144,7 +144,7 @@
                     <!-- ### IMAGE ### -->
                     <div class="panel panel-bordered panel-primary">
                         <div class="panel-heading">
-                            <h3 class="panel-title"><i class="icon wb-image"></i> {{ __('voyager.post.image') }}</h3>
+                            <h3 class="panel-title"><i class="icon wb-image"></i> {{ __('voyager::post.image') }}</h3>
                             <div class="panel-actions">
                                 <a class="panel-action voyager-angle-down" data-toggle="panel-collapse" aria-hidden="true"></a>
                             </div>
@@ -158,7 +158,7 @@
                     <!-- ### SEO CONTENT ### -->
                     <div class="panel panel-bordered panel-info">
                         <div class="panel-heading">
-                            <h3 class="panel-title"><i class="icon wb-search"></i> {{ __('voyager.post.seo_content') }}</h3>
+                            <h3 class="panel-title"><i class="icon wb-search"></i> {{ __('voyager::post.seo_content') }}</h3>
                             <div class="panel-actions">
                                 <a class="panel-action voyager-angle-down" data-toggle="panel-collapse" aria-hidden="true"></a>
                             </div>
@@ -172,7 +172,7 @@
             </div>
 
             <button type="submit" class="btn btn-primary pull-right">
-                @if(isset($dataTypeContent->id)){{ __('voyager.post.update') }}@else <i class="icon wb-plus-circle"></i> {{ __('voyager.post.new') }} @endif
+                @if(isset($dataTypeContent->id)){{ __('voyager::post.update') }}@else <i class="icon wb-plus-circle"></i> {{ __('voyager::post.new') }} @endif
             </button>
         </form>
 
