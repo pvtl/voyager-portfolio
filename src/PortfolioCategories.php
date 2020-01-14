@@ -3,12 +3,11 @@
 namespace Pvtl\VoyagerPortfolio;
 
 use TCG\Voyager\Traits\Translatable;
-use TCG\Voyager\Traits\HasRelationships;
 use Illuminate\Database\Eloquent\Model;
 
 class PortfolioCategories extends Model
 {
-    use Translatable, HasRelationships;
+    use Translatable;
 
     protected $table = 'portfolio_categories';
 
